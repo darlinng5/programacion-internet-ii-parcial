@@ -1,0 +1,70 @@
+<div class="home">
+  <header class="hero">
+    <div class="hero-content">
+      <h1>⚽ Tracker Mundial 2026</h1>
+      <p>Seguimiento en tiempo real de equipos, grupos, partidos y tablas de posiciones.</p>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-number">{{ totalTeams }}</span>
+          <span class="stat-label">Equipos</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">12</span>
+          <span class="stat-label">Grupos</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">104</span>
+          <span class="stat-label">Partidos</span>
+        </div>
+      </div>
+      <div class="hero-links">
+        <a routerLink="/matches" class="btn-primary">Ver Partidos</a>
+        <a routerLink="/groups" class="btn-secondary">Ver Grupos</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="home-content">
+    <section class="matches-section">
+      <h2>Últimos Resultados</h2>
+      @if (recentMatches.length === 0) {
+        <p class="empty">No hay resultados aún.</p>
+      } @else {
+        <div class="matches-grid">
+          @for (match of recentMatches; track match.id) {
+            <a [routerLink]="['/matches', match.id]" class="match-card finished">
+              <div class="match-group">Grupo {{ match.group }}</div>
+              <div class="match-teams">
+                <span class="team">{{ match.homeTeam.flag }} {{ match.homeTeam.code }}</span>
+                <span class="score">{{ match.homeScore }} - {{ match.awayScore }}</span>
+                <span class="team">{{ match.awayTeam.code }} {{ match.awayTeam.flag }}</span>
+              </div>
+              <div class="match-date">{{ match.date }}</div>
+            </a>
+          }
+        </div>
+      }
+    </section>
+
+    <section class="matches-section">
+      <h2>Próximos Partidos</h2>
+      @if (upcomingMatches.length === 0) {
+        <p class="empty">No hay partidos programados.</p>
+      } @else {
+        <div class="matches-grid">
+          @for (match of upcomingMatches; track match.id) {
+            <a [routerLink]="['/matches', match.id]" class="match-card scheduled">
+              <div class="match-group">Grupo {{ match.group }}</div>
+              <div class="match-teams">
+                <span class="team">{{ match.homeTeam.flag }} {{ match.homeTeam.code }}</span>
+                <span class="score">vs</span>
+                <span class="team">{{ match.awayTeam.code }} {{ match.awayTeam.flag }}</span>
+              </div>
+              <div class="match-date">{{ match.date }} · {{ match.time }}</div>
+            </a>
+          }
+        </div>
+      }
+    </section>
+  </div>
+</div>
