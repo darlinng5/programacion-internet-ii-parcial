@@ -38,7 +38,7 @@
         <select id="homeTeamId" formControlName="homeTeamId">
           <option [value]="null">-- Seleccionar --</option>
           @for (team of teams; track team.id) {
-            <option [value]="team.id">{{ team.flag }} {{ team.name }}</option>
+            <option [value]="team.id">{{ team.name }} ({{ team.code }})</option>
           }
         </select>
       </div>
@@ -47,7 +47,7 @@
         <select id="awayTeamId" formControlName="awayTeamId">
           <option [value]="null">-- Seleccionar --</option>
           @for (team of teams; track team.id) {
-            <option [value]="team.id">{{ team.flag }} {{ team.name }}</option>
+            <option [value]="team.id">{{ team.name }} ({{ team.code }})</option>
           }
         </select>
       </div>

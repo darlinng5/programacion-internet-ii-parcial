@@ -14,8 +14,6 @@
   box-shadow: 0 1px 6px rgba(0,0,0,0.08);
 }
 
-.team-flag { font-size: 4rem; }
-
 .team-header h1 { margin: 0 0 0.5rem; color: #1a3a5c; }
 
 .team-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }

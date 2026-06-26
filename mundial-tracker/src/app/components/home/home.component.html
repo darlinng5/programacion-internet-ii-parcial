@@ -35,9 +35,9 @@
             <a [routerLink]="['/matches', match.id]" class="match-card finished">
               <div class="match-group">Grupo {{ match.group }}</div>
               <div class="match-teams">
-                <span class="team">{{ match.homeTeam.flag }} {{ match.homeTeam.code }}</span>
+                <span class="team">{{ match.homeTeam.code }}</span>
                 <span class="score">{{ match.homeScore }} - {{ match.awayScore }}</span>
-                <span class="team">{{ match.awayTeam.code }} {{ match.awayTeam.flag }}</span>
+                <span class="team">{{ match.awayTeam.code }}</span>
               </div>
               <div class="match-date">{{ match.date }}</div>
             </a>
@@ -56,9 +56,9 @@
             <a [routerLink]="['/matches', match.id]" class="match-card scheduled">
               <div class="match-group">Grupo {{ match.group }}</div>
               <div class="match-teams">
-                <span class="team">{{ match.homeTeam.flag }} {{ match.homeTeam.code }}</span>
+                <span class="team">{{ match.homeTeam.code }}</span>
                 <span class="score">vs</span>
-                <span class="team">{{ match.awayTeam.code }} {{ match.awayTeam.flag }}</span>
+                <span class="team">{{ match.awayTeam.code }}</span>
               </div>
               <div class="match-date">{{ match.date }} · {{ match.time }}</div>
             </a>

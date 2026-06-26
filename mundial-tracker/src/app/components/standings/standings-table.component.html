@@ -22,7 +22,7 @@
           @if (showGroupColumn) { <td><span class="group-badge">{{ row.group }}</span></td> }
           <td>
             <a [routerLink]="['/teams', row.team.id]" class="team-link">
-              {{ row.team.flag }} {{ row.team.name }}
+              {{ row.team.name }}
             </a>
           </td>
           <td>{{ row.played }}</td>

@@ -18,22 +18,12 @@
       }
     </div>
 
-    <div class="form-row">
-      <div class="form-group">
-        <label for="code">Código (2-3 letras) *</label>
-        <input id="code" formControlName="code" type="text" placeholder="Ej: ARG" maxlength="3" />
-        @if (form.get('code')?.invalid && form.get('code')?.touched) {
-          <span class="field-error">Código de 2 a 3 letras.</span>
-        }
-      </div>
-
-      <div class="form-group">
-        <label for="flag">Emoji bandera *</label>
-        <input id="flag" formControlName="flag" type="text" placeholder="Ej: 🇦🇷" />
-        @if (form.get('flag')?.invalid && form.get('flag')?.touched) {
-          <span class="field-error">La bandera es obligatoria.</span>
-        }
-      </div>
+    <div class="form-group">
+      <label for="code">Código (2-3 letras) *</label>
+      <input id="code" formControlName="code" type="text" placeholder="Ej: ARG" maxlength="3" />
+      @if (form.get('code')?.invalid && form.get('code')?.touched) {
+        <span class="field-error">Código de 2 a 3 letras.</span>
+      }
     </div>
 
     <div class="form-row">

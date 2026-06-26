@@ -15,9 +15,6 @@
 
       <div class="scoreboard">
         <div class="team-block">
-          <a [routerLink]="['/teams', match.homeTeam.id]">
-            <span class="flag">{{ match.homeTeam.flag }}</span>
-          </a>
           <a [routerLink]="['/teams', match.homeTeam.id]" class="team-name">{{ match.homeTeam.name }}</a>
           <span class="team-code">{{ match.homeTeam.code }}</span>
         </div>
@@ -32,9 +29,6 @@
         </div>
 
         <div class="team-block away">
-          <a [routerLink]="['/teams', match.awayTeam.id]">
-            <span class="flag">{{ match.awayTeam.flag }}</span>
-          </a>
           <a [routerLink]="['/teams', match.awayTeam.id]" class="team-name">{{ match.awayTeam.name }}</a>
           <span class="team-code">{{ match.awayTeam.code }}</span>
         </div>

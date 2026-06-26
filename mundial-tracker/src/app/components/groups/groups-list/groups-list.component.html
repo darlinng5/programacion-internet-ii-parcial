@@ -8,7 +8,7 @@
         <div class="group-title">Grupo {{ group.name }}</div>
         <ul class="team-list">
           @for (team of group.teams; track team.id) {
-            <li>{{ team.flag }} {{ team.name }}</li>
+            <li>{{ team.name }}</li>
           }
         </ul>
       </a>

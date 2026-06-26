@@ -32,7 +32,6 @@ export class TeamFormComponent implements OnInit {
     this.form = this.fb.group({
       name:          ['', [Validators.required, Validators.minLength(2)]],
       code:          ['', [Validators.required, Validators.minLength(2), Validators.maxLength(3)]],
-      flag:          ['', Validators.required],
       group:         ['A', Validators.required],
       confederation: ['UEFA', Validators.required],
     });

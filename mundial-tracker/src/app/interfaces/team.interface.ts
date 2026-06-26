@@ -4,7 +4,6 @@ export interface Team {
   id: number;
   name: string;
   code: string;
-  flag: string;
   group: GroupName;
   confederation: string;
 }
@@ -12,7 +11,6 @@ export interface Team {
 export interface CreateTeamDto {
   name: string;
   code: string;
-  flag: string;
   group: GroupName;
   confederation: string;
 }

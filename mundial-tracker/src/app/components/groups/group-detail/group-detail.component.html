@@ -25,9 +25,9 @@
             <a [routerLink]="['/matches', match.id]" class="match-row" [class]="match.status">
               <span class="match-date">{{ match.date }} {{ match.time }}</span>
               <div class="match-teams">
-                <span>{{ match.homeTeam.flag }} {{ match.homeTeam.name }}</span>
+                <span>{{ match.homeTeam.name }}</span>
                 <span class="score">{{ getResult(match) }}</span>
-                <span>{{ match.awayTeam.name }} {{ match.awayTeam.flag }}</span>
+                <span>{{ match.awayTeam.name }}</span>
               </div>
               <span class="venue">{{ match.city }}</span>
             </a>
@@ -41,7 +41,6 @@
       <div class="teams-grid">
         @for (team of group.teams; track team.id) {
           <a [routerLink]="['/teams', team.id]" class="team-card">
-            <span class="flag">{{ team.flag }}</span>
             <span class="name">{{ team.name }}</span>
             <span class="code">{{ team.code }}</span>
           </a>

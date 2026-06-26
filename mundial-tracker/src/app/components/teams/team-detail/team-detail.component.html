@@ -5,7 +5,6 @@
     </div>
 
     <div class="team-header">
-      <span class="team-flag">{{ team.flag }}</span>
       <div>
         <h1>{{ team.name }}</h1>
         <div class="team-meta">
@@ -26,9 +25,9 @@
           <a [routerLink]="['/matches', match.id]" class="match-row" [class]="match.status">
             <span class="match-date">{{ match.date }}</span>
             <span class="match-teams">
-              {{ match.homeTeam.flag }} {{ match.homeTeam.code }}
+              {{ match.homeTeam.code }}
               <strong>{{ getResult(match) }}</strong>
-              {{ match.awayTeam.code }} {{ match.awayTeam.flag }}
+              {{ match.awayTeam.code }}
             </span>
             <span class="match-status status-{{ match.status }}">{{ match.status }}</span>
           </a>

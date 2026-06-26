@@ -23,7 +23,6 @@
     <table class="data-table">
       <thead>
         <tr>
-          <th>Bandera</th>
           <th>Nombre</th>
           <th>Código</th>
           <th>Grupo</th>
@@ -34,7 +33,6 @@
       <tbody>
         @for (team of filtered; track team.id) {
           <tr>
-            <td class="flag-cell">{{ team.flag }}</td>
             <td>{{ team.name }}</td>
             <td><span class="code-badge">{{ team.code }}</span></td>
             <td><span class="group-badge">{{ team.group }}</span></td>
@@ -46,7 +44,7 @@
             </td>
           </tr>
         } @empty {
-          <tr><td colspan="6" class="empty">No se encontraron equipos.</td></tr>
+          <tr><td colspan="5" class="empty">No se encontraron equipos.</td></tr>
         }
       </tbody>
     </table>
