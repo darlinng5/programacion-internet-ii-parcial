@@ -3,13 +3,13 @@
     <a routerLink="/matches">← Partidos</a>
   </div>
 
-  <h1>{{ isEdit ? 'Editar Partido' : 'Nuevo Partido' }}</h1>
+  <h1>Nuevo Partido</h1>
 
   @if (error) {
     <div class="alert-error">{{ error }}</div>
   }
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-card">
+  <form [formGroup]="form" (ngSubmit)="createMatch()" class="form-card">
     <div class="form-row">
       <div class="form-group">
         <label for="date">Fecha *</label>
@@ -96,7 +96,7 @@
     <div class="form-actions">
       <a routerLink="/matches" class="btn-cancel">Cancelar</a>
       <button type="submit" class="btn-submit" [disabled]="form.invalid || loading">
-        {{ loading ? 'Guardando...' : (isEdit ? 'Actualizar' : 'Crear Partido') }}
+        {{ loading ? 'Guardando...' : 'Crear Partido' }}
       </button>
     </div>
   </form>

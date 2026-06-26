@@ -1,15 +1,15 @@
 <div class="page">
   <div class="breadcrumb">
-    <a routerLink="/teams">← Equipos</a>
+    <a [routerLink]="['/teams', teamId]">← Equipo</a>
   </div>
 
-  <h1>{{ isEdit ? 'Editar Equipo' : 'Nuevo Equipo' }}</h1>
+  <h1>Editar Equipo</h1>
 
   @if (error) {
     <div class="alert-error">{{ error }}</div>
   }
 
-  <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-card">
+  <form [formGroup]="form" (ngSubmit)="updateTeam()" class="form-card">
     <div class="form-group">
       <label for="name">Nombre del equipo *</label>
       <input id="name" formControlName="name" type="text" placeholder="Ej: Argentina" />
@@ -47,9 +47,9 @@
     </div>
 
     <div class="form-actions">
-      <a routerLink="/teams" class="btn-cancel">Cancelar</a>
+      <a [routerLink]="['/teams', teamId]" class="btn-cancel">Cancelar</a>
       <button type="submit" class="btn-submit" [disabled]="form.invalid || loading">
-        {{ loading ? 'Guardando...' : (isEdit ? 'Actualizar' : 'Crear Equipo') }}
+        {{ loading ? 'Guardando...' : 'Actualizar Equipo' }}
       </button>
     </div>
   </form>

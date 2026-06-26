@@ -8,16 +8,15 @@ import { Team, GroupName } from '../../../interfaces/team.interface';
 import { MatchStage, MatchStatus } from '../../../interfaces/match.interface';
 
 @Component({
-  selector: 'app-match-form',
+  selector: 'app-match-edit',
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
-  templateUrl: './match-form.component.html',
-  styleUrl: './match-form.component.css',
+  templateUrl: './match-edit.component.html',
+  styleUrl: './match-edit.component.css',
 })
-export class MatchFormComponent implements OnInit {
+export class MatchEditComponent implements OnInit {
   form!: FormGroup;
-  isEdit = false;
-  matchId: number | null = null;
+  matchId!: number;
   teams: Team[] = [];
   groups: GroupName[] = ['A','B','C','D','E','F','G','H','I','J','K','L'];
   stages: MatchStage[] = ['group','round-of-32','round-of-16','quarter-final','semi-final','third-place','final'];
@@ -52,21 +51,17 @@ export class MatchFormComponent implements OnInit {
       this.teams = teams;
     });
 
-    const id = this.route.snapshot.paramMap.get('id');
-    if (id) {
-      this.isEdit = true;
-      this.matchId = Number(id);
-      this.matchesService.getMatchById(this.matchId).subscribe(match => {
-        this.form.patchValue({
-          ...match,
-          homeTeamId: match.homeTeam.id,
-          awayTeamId: match.awayTeam.id,
-        });
+    this.matchId = Number(this.route.snapshot.paramMap.get('id'));
+    this.matchesService.getMatchById(this.matchId).subscribe(match => {
+      this.form.patchValue({
+        ...match,
+        homeTeamId: match.homeTeam.id,
+        awayTeamId: match.awayTeam.id,
       });
-    }
+    });
   }
 
-  onSubmit(): void {
+  updateMatch(): void {
     if (this.form.invalid) return;
     this.loading = true;
 
@@ -79,16 +74,9 @@ export class MatchFormComponent implements OnInit {
       awayScore: raw.awayScore !== null && raw.awayScore !== '' ? Number(raw.awayScore) : null,
     };
 
-    if (this.isEdit && this.matchId) {
-      this.matchesService.updateMatch(this.matchId, dto).subscribe({
-        next: () => this.router.navigate(['/matches', this.matchId]),
-        error: () => { this.error = 'Error al actualizar el partido.'; this.loading = false; },
-      });
-    } else {
-      this.matchesService.createMatch(dto).subscribe({
-        next: match => this.router.navigate(['/matches', match.id]),
-        error: () => { this.error = 'Error al crear el partido.'; this.loading = false; },
-      });
-    }
+    this.matchesService.updateMatch(this.matchId, dto).subscribe({
+      next: () => this.router.navigate(['/matches', this.matchId]),
+      error: () => { this.error = 'Error al actualizar el partido.'; this.loading = false; },
+    });
   }
 }

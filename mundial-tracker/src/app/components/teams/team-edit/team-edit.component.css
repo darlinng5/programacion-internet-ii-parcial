@@ -37,11 +37,7 @@ h1 { color: #1a3a5c; margin-bottom: 1.5rem; }
 
 @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
 
-label {
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #444;
-}
+label { font-size: 0.85rem; font-weight: 600; color: #444; }
 
 input, select {
   padding: 0.5rem 0.75rem;
@@ -51,10 +47,7 @@ input, select {
   transition: border-color 0.2s;
 }
 
-input:focus, select:focus {
-  outline: none;
-  border-color: #1a3a5c;
-}
+input:focus, select:focus { outline: none; border-color: #1a3a5c; }
 
 .field-error { color: #c62828; font-size: 0.78rem; }
 
@@ -76,8 +69,8 @@ input:focus, select:focus {
 
 .btn-submit {
   padding: 0.55rem 1.4rem;
-  background: #1a3a5c;
-  color: #fff;
+  background: #c8a800;
+  color: #1a3a5c;
   border: none;
   border-radius: 6px;
   font-size: 0.95rem;
