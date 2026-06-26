@@ -1,0 +1,17 @@
+<div class="page">
+  <h1>Grupos</h1>
+  <p class="subtitle">Mundial 2026 — 12 grupos, 4 equipos cada uno</p>
+
+  <div class="groups-grid">
+    @for (group of groups; track group.id) {
+      <a [routerLink]="['/groups', group.id]" class="group-card">
+        <div class="group-title">Grupo {{ group.name }}</div>
+        <ul class="team-list">
+          @for (team of group.teams; track team.id) {
+            <li>{{ team.name }}</li>
+          }
+        </ul>
+      </a>
+    }
+  </div>
+</div>

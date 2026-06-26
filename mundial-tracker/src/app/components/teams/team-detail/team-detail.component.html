@@ -1,0 +1,40 @@
+@if (team) {
+  <div class="page">
+    <div class="breadcrumb">
+      <a routerLink="/teams">← Equipos</a>
+    </div>
+
+    <div class="team-header">
+      <div>
+        <h1>{{ team.name }}</h1>
+        <div class="team-meta">
+          <span class="badge code">{{ team.code }}</span>
+          <span class="badge group">Grupo {{ team.group }}</span>
+          <span class="badge conf">{{ team.confederation }}</span>
+        </div>
+      </div>
+      <a [routerLink]="['/teams/edit', team.id]" class="btn-edit">✏️ Editar</a>
+    </div>
+
+    <h2>Partidos</h2>
+    @if (matches.length === 0) {
+      <p class="empty">Este equipo no tiene partidos registrados.</p>
+    } @else {
+      <div class="matches">
+        @for (match of matches; track match.id) {
+          <a [routerLink]="['/matches', match.id]" class="match-row" [class]="match.status">
+            <span class="match-date">{{ match.date }}</span>
+            <span class="match-teams">
+              {{ match.homeTeam.code }}
+              <strong>{{ getResult(match) }}</strong>
+              {{ match.awayTeam.code }}
+            </span>
+            <span class="match-status status-{{ match.status }}">{{ match.status }}</span>
+          </a>
+        }
+      </div>
+    }
+  </div>
+} @else {
+  <div class="loading">Cargando equipo...</div>
+}

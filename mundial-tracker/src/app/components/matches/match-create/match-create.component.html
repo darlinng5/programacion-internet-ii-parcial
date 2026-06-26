@@ -1,0 +1,103 @@
+<div class="page">
+  <div class="breadcrumb">
+    <a routerLink="/matches">← Partidos</a>
+  </div>
+
+  <h1>Nuevo Partido</h1>
+
+  @if (error) {
+    <div class="alert-error">{{ error }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="createMatch()" class="form-card">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="date">Fecha *</label>
+        <input id="date" formControlName="date" type="date" />
+      </div>
+      <div class="form-group">
+        <label for="time">Hora *</label>
+        <input id="time" formControlName="time" type="time" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="venue">Estadio *</label>
+        <input id="venue" formControlName="venue" type="text" placeholder="Ej: MetLife Stadium" />
+      </div>
+      <div class="form-group">
+        <label for="city">Ciudad *</label>
+        <input id="city" formControlName="city" type="text" placeholder="Ej: Nueva York" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="homeTeamId">Equipo Local *</label>
+        <select id="homeTeamId" formControlName="homeTeamId">
+          <option [value]="null">-- Seleccionar --</option>
+          @for (team of teams; track team.id) {
+            <option [value]="team.id">{{ team.name }} ({{ team.code }})</option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="awayTeamId">Equipo Visitante *</label>
+        <select id="awayTeamId" formControlName="awayTeamId">
+          <option [value]="null">-- Seleccionar --</option>
+          @for (team of teams; track team.id) {
+            <option [value]="team.id">{{ team.name }} ({{ team.code }})</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="homeScore">Goles Local</label>
+        <input id="homeScore" formControlName="homeScore" type="number" min="0" placeholder="—" />
+      </div>
+      <div class="form-group">
+        <label for="awayScore">Goles Visitante</label>
+        <input id="awayScore" formControlName="awayScore" type="number" min="0" placeholder="—" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="group">Grupo</label>
+        <select id="group" formControlName="group">
+          <option value="">— Fase eliminatoria —</option>
+          @for (g of groups; track g) {
+            <option [value]="g">Grupo {{ g }}</option>
+          }
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="stage">Fase *</label>
+        <select id="stage" formControlName="stage">
+          @for (s of stages; track s) {
+            <option [value]="s">{{ s }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="status">Estado *</label>
+      <select id="status" formControlName="status">
+        @for (s of statuses; track s) {
+          <option [value]="s">{{ s }}</option>
+        }
+      </select>
+    </div>
+
+    <div class="form-actions">
+      <a routerLink="/matches" class="btn-cancel">Cancelar</a>
+      <button type="submit" class="btn-submit" [disabled]="form.invalid || loading">
+        {{ loading ? 'Guardando...' : 'Crear Partido' }}
+      </button>
+    </div>
+  </form>
+</div>

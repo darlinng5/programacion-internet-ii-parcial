@@ -1,0 +1,61 @@
+.table-wrapper { overflow-x: auto; }
+
+.standings-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0,0,0,0.07);
+  font-size: 0.88rem;
+}
+
+.standings-table th {
+  background: #1a3a5c;
+  color: #fff;
+  padding: 0.6rem 0.75rem;
+  text-align: center;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  cursor: default;
+}
+
+.standings-table th:nth-child(3) { text-align: left; }
+
+.standings-table td {
+  padding: 0.55rem 0.75rem;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: center;
+  color: #333;
+}
+
+.standings-table td:nth-child(3) { text-align: left; }
+
+.standings-table tr:last-child td { border-bottom: none; }
+
+.standings-table tr.promoted td { background: #f0fff4; }
+.standings-table tr:hover td { background: #f8f9fa; }
+
+.pos { font-weight: 700; color: #1a3a5c; }
+
+.points { font-weight: 700; color: #1a3a5c; }
+
+.team-link {
+  text-decoration: none;
+  color: #1a3a5c;
+  font-weight: 500;
+}
+
+.team-link:hover { text-decoration: underline; }
+
+.group-badge {
+  background: #c8a800;
+  color: #1a3a5c;
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 0.8rem;
+}
+
+.empty { text-align: center; color: #aaa; padding: 1.5rem; font-style: italic; }

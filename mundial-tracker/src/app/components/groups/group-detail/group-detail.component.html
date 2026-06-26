@@ -1,0 +1,53 @@
+@if (group) {
+  <div class="page">
+    <div class="breadcrumb">
+      <a routerLink="/groups">← Grupos</a>
+    </div>
+
+    <h1>Grupo {{ group.name }}</h1>
+
+    <section>
+      <h2>Tabla de Posiciones</h2>
+      @if (standings.length > 0) {
+        <app-standings-table [standings]="standings" />
+      } @else {
+        <p class="empty">Aún no hay posiciones para este grupo.</p>
+      }
+    </section>
+
+    <section>
+      <h2>Partidos</h2>
+      @if (matches.length === 0) {
+        <p class="empty">No hay partidos registrados para este grupo.</p>
+      } @else {
+        <div class="matches">
+          @for (match of matches; track match.id) {
+            <a [routerLink]="['/matches', match.id]" class="match-row" [class]="match.status">
+              <span class="match-date">{{ match.date }} {{ match.time }}</span>
+              <div class="match-teams">
+                <span>{{ match.homeTeam.name }}</span>
+                <span class="score">{{ getResult(match) }}</span>
+                <span>{{ match.awayTeam.name }}</span>
+              </div>
+              <span class="venue">{{ match.city }}</span>
+            </a>
+          }
+        </div>
+      }
+    </section>
+
+    <section>
+      <h2>Equipos</h2>
+      <div class="teams-grid">
+        @for (team of group.teams; track team.id) {
+          <a [routerLink]="['/teams', team.id]" class="team-card">
+            <span class="name">{{ team.name }}</span>
+            <span class="code">{{ team.code }}</span>
+          </a>
+        }
+      </div>
+    </section>
+  </div>
+} @else {
+  <div class="loading">Cargando grupo...</div>
+}

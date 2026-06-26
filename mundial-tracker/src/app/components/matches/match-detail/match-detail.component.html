@@ -1,0 +1,60 @@
+@if (match) {
+  <div class="page">
+    <div class="breadcrumb">
+      <a routerLink="/matches">← Partidos</a>
+    </div>
+
+    <div class="match-card">
+      <div class="match-header">
+        @if (match.group) {
+          <span class="badge group">Grupo {{ match.group }}</span>
+        }
+        <span class="badge stage">{{ match.stage }}</span>
+        <span class="badge status {{ match.status }}">{{ statusLabel(match.status) }}</span>
+      </div>
+
+      <div class="scoreboard">
+        <div class="team-block">
+          <a [routerLink]="['/teams', match.homeTeam.id]" class="team-name">{{ match.homeTeam.name }}</a>
+          <span class="team-code">{{ match.homeTeam.code }}</span>
+        </div>
+
+        <div class="score-block">
+          @if (match.status === 'finished' && match.homeScore !== null) {
+            <span class="score">{{ match.homeScore }} - {{ match.awayScore }}</span>
+          } @else {
+            <span class="score vs">VS</span>
+          }
+          <span class="match-time">{{ match.date }} · {{ match.time }}</span>
+        </div>
+
+        <div class="team-block away">
+          <a [routerLink]="['/teams', match.awayTeam.id]" class="team-name">{{ match.awayTeam.name }}</a>
+          <span class="team-code">{{ match.awayTeam.code }}</span>
+        </div>
+      </div>
+
+      <div class="match-info">
+        <div class="info-row">
+          <span class="label">Sede</span>
+          <span>{{ match.venue }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Ciudad</span>
+          <span>{{ match.city }}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Fase</span>
+          <span>{{ match.stage }}</span>
+        </div>
+      </div>
+
+      <div class="match-actions">
+        <a [routerLink]="['/matches/edit', match.id]" class="btn-edit">✏️ Editar resultado</a>
+        <button (click)="deleteMatch()" class="btn-delete">🗑 Eliminar</button>
+      </div>
+    </div>
+  </div>
+} @else {
+  <div class="loading">Cargando partido...</div>
+}

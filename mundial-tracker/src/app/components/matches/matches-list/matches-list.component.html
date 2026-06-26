@@ -1,0 +1,47 @@
+<div class="page">
+  <div class="page-header">
+    <h1>Partidos</h1>
+    <a routerLink="/matches/new" class="btn-add">+ Nuevo Partido</a>
+  </div>
+
+  <div class="filters">
+    <select (change)="onGroupChange($event)" class="filter-select">
+      <option value="all">Todos los grupos</option>
+      @for (g of groups.slice(1); track g) {
+        <option [value]="g">Grupo {{ g }}</option>
+      }
+    </select>
+    <select (change)="onStatusChange($event)" class="filter-select">
+      <option value="all">Todos los estados</option>
+      <option value="scheduled">Programados</option>
+      <option value="live">En vivo</option>
+      <option value="finished">Finalizados</option>
+    </select>
+  </div>
+
+  <div class="matches-list">
+    @for (match of filtered; track match.id) {
+      <a [routerLink]="['/matches', match.id]" class="match-card status-{{ match.status }}">
+        <div class="match-meta">
+          @if (match.group) { <span class="badge group">Grupo {{ match.group }}</span> }
+          <span class="badge status-badge {{ match.status }}">{{ statusLabel(match.status) }}</span>
+        </div>
+        <div class="match-body">
+          <div class="team home">
+            <span class="name">{{ match.homeTeam.name }}</span>
+          </div>
+          <div class="result">
+            <span class="score">{{ getResult(match) }}</span>
+            <span class="time">{{ match.date }} · {{ match.time }}</span>
+          </div>
+          <div class="team away">
+            <span class="name">{{ match.awayTeam.name }}</span>
+          </div>
+        </div>
+        <div class="match-venue">📍 {{ match.venue }}, {{ match.city }}</div>
+      </a>
+    } @empty {
+      <p class="empty">No hay partidos con los filtros seleccionados.</p>
+    }
+  </div>
+</div>
