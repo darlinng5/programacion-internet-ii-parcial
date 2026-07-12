@@ -45,11 +45,10 @@
 
       <div class="form-group">
         <label for="category">Categoría *</label>
-        <select id="category" formControlName="category">
-          @for (c of categories; track c) {
-            <option [value]="c">{{ c }}</option>
-          }
-        </select>
+        <input id="category" formControlName="category" type="text" placeholder="Ej: previa" />
+        @if (form.get('category')?.invalid && form.get('category')?.touched) {
+          <span class="field-error">La categoría es obligatoria.</span>
+        }
       </div>
     </div>
 

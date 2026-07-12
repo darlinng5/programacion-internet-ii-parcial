@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 
 import { NewsService } from '../../../services/news.service';
-import { NewsCategory } from '../../../interfaces/news.interface';
 
 @Component({
   selector: 'app-news-create',
@@ -14,7 +13,6 @@ import { NewsCategory } from '../../../interfaces/news.interface';
 })
 export class NewsCreateComponent implements OnInit {
   form!: FormGroup;
-  categories: NewsCategory[] = ['previa', 'resultados', 'jugadores', 'estadios', 'general'];
   loading = false;
   error = '';
 
@@ -31,7 +29,7 @@ export class NewsCreateComponent implements OnInit {
       content:  ['', [Validators.required, Validators.minLength(20)]],
       date:     ['', Validators.required],
       author:   ['', Validators.required],
-      category: ['general', Validators.required],
+      category: ['', Validators.required],
     });
   }
 
