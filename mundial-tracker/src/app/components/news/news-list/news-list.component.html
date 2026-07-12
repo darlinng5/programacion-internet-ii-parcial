@@ -1,6 +1,11 @@
 <div class="page">
-  <h1>Noticias</h1>
-  <p class="subtitle">Las últimas novedades del Mundial 2026</p>
+  <div class="header-row">
+    <div>
+      <h1>Noticias</h1>
+      <p class="subtitle">Las últimas novedades del Mundial 2026</p>
+    </div>
+    <a routerLink="/news/new" class="btn-new">+ Nueva Noticia</a>
+  </div>
 
   @if (news.length === 0) {
     <p class="empty">No hay noticias disponibles.</p>

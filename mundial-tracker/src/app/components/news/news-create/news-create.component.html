@@ -1,0 +1,71 @@
+<div class="page">
+  <div class="breadcrumb">
+    <a routerLink="/news">← Noticias</a>
+  </div>
+
+  <h1>Nueva Noticia</h1>
+
+  @if (error) {
+    <div class="alert-error">{{ error }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="createNews()" class="form-card">
+    <div class="form-group">
+      <label for="title">Título *</label>
+      <input id="title" formControlName="title" type="text" placeholder="Ej: Arranca el Mundial 2026" />
+      @if (form.get('title')?.invalid && form.get('title')?.touched) {
+        <span class="field-error">El título es obligatorio (mínimo 4 caracteres).</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="summary">Resumen *</label>
+      <input id="summary" formControlName="summary" type="text" placeholder="Resumen breve de la noticia" />
+      @if (form.get('summary')?.invalid && form.get('summary')?.touched) {
+        <span class="field-error">El resumen es obligatorio (mínimo 10 caracteres).</span>
+      }
+    </div>
+
+    <div class="form-group">
+      <label for="content">Contenido *</label>
+      <textarea id="content" formControlName="content" rows="5" placeholder="Desarrollo completo de la noticia"></textarea>
+      @if (form.get('content')?.invalid && form.get('content')?.touched) {
+        <span class="field-error">El contenido es obligatorio (mínimo 20 caracteres).</span>
+      }
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="date">Fecha *</label>
+        <input id="date" formControlName="date" type="date" />
+        @if (form.get('date')?.invalid && form.get('date')?.touched) {
+          <span class="field-error">La fecha es obligatoria.</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="category">Categoría *</label>
+        <select id="category" formControlName="category">
+          @for (c of categories; track c) {
+            <option [value]="c">{{ c }}</option>
+          }
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="author">Autor *</label>
+      <input id="author" formControlName="author" type="text" placeholder="Ej: Redacción Mundial Tracker" />
+      @if (form.get('author')?.invalid && form.get('author')?.touched) {
+        <span class="field-error">El autor es obligatorio.</span>
+      }
+    </div>
+
+    <div class="form-actions">
+      <a routerLink="/news" class="btn-cancel">Cancelar</a>
+      <button type="submit" class="btn-submit" [disabled]="form.invalid || loading">
+        {{ loading ? 'Guardando...' : 'Crear Noticia' }}
+      </button>
+    </div>
+  </form>
+</div>

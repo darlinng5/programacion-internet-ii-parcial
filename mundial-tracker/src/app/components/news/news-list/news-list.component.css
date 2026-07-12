@@ -1,7 +1,26 @@
 .page { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; }
 
+.header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 h1 { color: #1a3a5c; margin-bottom: 0.25rem; }
 .subtitle { color: #888; margin-bottom: 1.5rem; font-size: 0.9rem; }
+
+.btn-new {
+  background: #1a3a5c;
+  color: #fff;
+  padding: 0.55rem 1.1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
 
 .news-grid {
   display: grid;

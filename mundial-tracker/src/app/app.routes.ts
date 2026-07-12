@@ -12,6 +12,7 @@ import { MatchDetailComponent } from './components/matches/match-detail/match-de
 import { MatchCreateComponent } from './components/matches/match-create/match-create.component';
 import { MatchEditComponent } from './components/matches/match-edit/match-edit.component';
 import { NewsListComponent } from './components/news/news-list/news-list.component';
+import { NewsCreateComponent } from './components/news/news-create/news-create.component';
 import { NewsDetailComponent } from './components/news/news-detail/news-detail.component';
 
 export const routes: Routes = [
@@ -28,6 +29,7 @@ export const routes: Routes = [
   { path: 'matches/edit/:id', component: MatchEditComponent, title: 'Editar Partido' },
   { path: 'matches/:id',    component: MatchDetailComponent, title: 'Detalle Partido' },
   { path: 'news',           component: NewsListComponent,    title: 'Noticias — Mundial 2026' },
+  { path: 'news/new',       component: NewsCreateComponent,  title: 'Nueva Noticia' },
   { path: 'news/:id',       component: NewsDetailComponent,  title: 'Detalle Noticia' },
   { path: '**',             redirectTo: '' },
 ];

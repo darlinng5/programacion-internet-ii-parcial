@@ -10,3 +10,13 @@ export interface News {
   category: NewsCategory;
   imageUrl?: string;
 }
+
+export interface CreateNewsDto {
+  title: string;
+  summary: string;
+  content: string;
+  date: string;
+  author: string;
+  category: NewsCategory;
+  imageUrl?: string;
+}
