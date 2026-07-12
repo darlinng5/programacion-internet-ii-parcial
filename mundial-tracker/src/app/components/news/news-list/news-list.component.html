@@ -1,0 +1,22 @@
+<div class="page">
+  <h1>Noticias</h1>
+  <p class="subtitle">Las últimas novedades del Mundial 2026</p>
+
+  @if (news.length === 0) {
+    <p class="empty">No hay noticias disponibles.</p>
+  } @else {
+    <div class="news-grid">
+      @for (item of news; track item.id) {
+        <a [routerLink]="['/news', item.id]" class="news-card">
+          <span class="category">{{ item.category }}</span>
+          <h2>{{ item.title }}</h2>
+          <p class="summary">{{ item.summary }}</p>
+          <div class="meta">
+            <span>{{ item.date }}</span>
+            <span>{{ item.author }}</span>
+          </div>
+        </a>
+      }
+    </div>
+  }
+</div>
