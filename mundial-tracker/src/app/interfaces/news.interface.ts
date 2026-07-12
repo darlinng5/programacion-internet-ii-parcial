@@ -1,5 +1,3 @@
-export type NewsCategory = 'previa' | 'resultados' | 'jugadores' | 'estadios' | 'general';
-
 export interface News {
   id: number;
   title: string;
@@ -7,7 +5,7 @@ export interface News {
   content: string;
   date: string;     // "2026-06-01"
   author: string;
-  category: NewsCategory;
+  category: string;
   imageUrl?: string;
 }
 
@@ -17,6 +15,6 @@ export interface CreateNewsDto {
   content: string;
   date: string;
   author: string;
-  category: NewsCategory;
+  category: string;
   imageUrl?: string;
 }
